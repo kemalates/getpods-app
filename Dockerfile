@@ -6,8 +6,16 @@ RUN apt update && \
       chmod +x ./kubectl && \
       mv ./kubectl /usr/local/bin/kubectl
 
-CMD kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |\
-tr -s '[[:space:]]' '\n' |\
-sort |\
-uniq -c
+
+COPY scripts/getpods.sh /
+RUN chmod +x /getpods.sh
+
+CMD /getpods.sh
+
+
+
+#CMD kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" |\
+#tr -s '[[:space:]]' '\n' |\
+#sort |\
+#uniq -c
 # CMD echo hello world
