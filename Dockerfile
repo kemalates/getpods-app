@@ -6,5 +6,5 @@ RUN apt update && \
       chmod +x ./kubectl && \
       mv ./kubectl /usr/local/bin/kubectl
 
-# CMD kubectl get po
-CMD echo hello world
+CMD kubectl get po
+# CMD echo hello world
