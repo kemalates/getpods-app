@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: internal-kubectl
 spec:
+  serviceAccountName: internal-kubectl
   containers:
     - name: internal-kubectl
       image: ghcr.io/kemalates/getpods-app:latest
