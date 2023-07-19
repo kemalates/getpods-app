@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: getpods
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: internal-kubectl
+          containers:
+          - name: getpods
+            image: ghcr.io/kemalates/getpods-app:latest
+            imagePullPolicy: IfNotPresent            
+          restartPolicy: OnFailure
