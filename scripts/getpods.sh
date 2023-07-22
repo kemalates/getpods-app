@@ -61,4 +61,6 @@ do
 	echo "$pod_name","$version" >> pods.csv
 done
 
+cat pods.csv
+
 aws s3 cp pods.csv s3://demome
